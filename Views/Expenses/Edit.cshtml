@@ -1,0 +1,37 @@
+﻿@{
+	ViewBag.Title = Model.Id == null ? "New Expense" : "Edit Expense";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+<form class="form-horizontal" role="form" action="@Url.Action("Index")">
+	@*Id?*@
+	<div class="form-group">
+		<label for="Description" class="control-label col-sm-2">Description:</label>
+		<div class="col-sm-4">
+			<input type="text" id="Description" class="form-control"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="Amount" class="control-label col-sm-2">Amount:</label>
+		<div class="col-sm-4">
+			<input type="text" id="Amount" class="form-control"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="Date" class="control-label col-sm-2">Date:</label>
+		<div class="col-sm-4">
+			<input type="text" id="Date" class="form-control"/>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="ExpenseType" class="control-label col-sm-2">Type:</label>
+		<div class="col-sm-4">
+			<input type="text" id="ExpenseType" class="form-control"/>
+		</div>
+	</div>
+	<input type="submit" class="btn btn-success"value="Save" />
+	<input type="button" class="btn btn-danger" value="Cancel" />
+</form>
+
