@@ -42,5 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.pdb
-*.pdb
-*.pdb
+*.dll
+bin/Finances.pdb
+bin/Finances.pdb
