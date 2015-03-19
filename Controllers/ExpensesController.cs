@@ -22,7 +22,7 @@
 		{
 			var database = GetDatabase();
 			var allExpenses = database.GetCollection<Expense>("Expense").AsQueryable();
-			var expense = allExpenses.Where(x => x.Id == id);
+			var expense = allExpenses.FirstOrDefault(x => x.Id == id);
 			return View(expense);
 		}
 	}
