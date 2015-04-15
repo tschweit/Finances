@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Finances.Controllers
+﻿namespace Finances.Controllers
 {
+	using System.Web.Mvc;
+
+	using Models;
+
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
 		{
-			return View();
+			return View(new Expense()
+			{
+				IsNew = false
+			});
 		}
 
 		public ActionResult About()

@@ -3,7 +3,7 @@
 	using System.Web.Mvc;
 	using MongoDB.Driver;
 
-	public class BaseController : Controller
+	public abstract class BaseController : Controller
 	{
 		public MongoDatabase GetDatabase()
 		{

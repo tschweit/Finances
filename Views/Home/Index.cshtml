@@ -1,5 +1,7 @@
-﻿@{
+﻿@model Finances.Models.Expense
+@{
     ViewBag.Title = "Home Page";
+	<h2>@Model.IsNew</h2>
 }
 
 <div class="jumbotron">

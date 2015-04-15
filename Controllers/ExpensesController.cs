@@ -3,7 +3,6 @@
 	using System.Linq;
 	using System.Web.Mvc;
 	using Models;
-	using MongoDB.Bson;
 	using MongoDB.Driver.Linq;
 
 	public class ExpensesController : BaseController
@@ -15,14 +14,15 @@
 
 		public ActionResult Add()
 		{
-			return View("Edit", new Expense());
+			var expense = new Expense();
+			return View("Edit", expense);
 		}
 
-		public ActionResult Edit(ObjectId id)
+		public ActionResult Edit(ExpenseView view)
 		{
 			var database = GetDatabase();
 			var allExpenses = database.GetCollection<Expense>("Expense").AsQueryable();
-			var expense = allExpenses.FirstOrDefault(x => x.Id == id);
+			var expense = allExpenses.FirstOrDefault(x => x.Id == view.Id) ?? (Expense)view;
 			return View(expense);
 		}
 	}
