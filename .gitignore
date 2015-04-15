@@ -45,3 +45,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+*.pdb
+obj/Debug/Finances.pdb
+*.dll
