@@ -1,38 +1,52 @@
-﻿@model Finances.Models.Expense
+﻿@model Finances.Models.ExpenseView
 
-@{
-	<h2>@Model.Amount</h2>
-}
 
-<h2>@Model.Date</h2>
+
+
+<h2>@(Model.IsNew ? "Add Expense" : "Edit Expense")</h2>
+
 <h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
-
-<form class="form-horizontal" role="form" action="@Url.Action("Index")">
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/knockout-3.3.0.js"></script>
+<script src="~/Scripts/knockout.mapping-latest.js"></script>
+@Styles.Render("~/Content/bootstrap-datepicker.css")
+<script src="@Url.Content("~/Scripts/expenseedit.js")"></script>
+<script>
+	
+	
+	
+</script>
+<form class="form-horizontal" id="form">
 	<div class="form-group">
 		<label for="Description" class="control-label col-sm-2">Description:</label>
 		<div class="col-sm-4">
-			<input type="text" id="Description" class="form-control"/>
+			<input type="text" id="Description" name="Description" value="@Model.Description" class="form-control"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="Amount" class="control-label col-sm-2">Amount:</label>
 		<div class="col-sm-4">
-			<input type="text" id="Amount" class="form-control"/>
+			<input type="text" id="Amount" name="Amount" value="@Model.Amount" class="form-control" />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="Date" class="control-label col-sm-2">Date:</label>
 		<div class="col-sm-4">
-			<input type="text" id="Date" class="form-control"/>
+			<input type="text" id="Date" name="Date" value="@Model.Date" class="form-control datepicker" />
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="ExpenseType" class="control-label col-sm-2">Type:</label>
 		<div class="col-sm-4">
-			<input type="text" id="ExpenseType" class="form-control"/>
+			<input type="text" id="ExpenseType" name="ExpenseType" value="@Model.ExpenseType" class="form-control" />
 		</div>
 	</div>
-	<input type="submit" class="btn btn-success"value="Save"/>
+	<input type="button" class="btn btn-success" value="Save" data-bind="click: save" />
 	<input type="button" class="btn btn-danger" value="Cancel"/>
 </form>
+
+<script>
+	var initialModel = @Html.Raw(Json.Encode(Model));
+</script>

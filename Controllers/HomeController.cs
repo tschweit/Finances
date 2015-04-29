@@ -6,13 +6,12 @@
 
 	public class HomeController : Controller
 	{
-		public ActionResult Index()
+		/*public ActionResult Index()
 		{
 			return View(new Expense()
 			{
-				IsNew = false
 			});
-		}
+		}*/
 
 		public ActionResult About()
 		{

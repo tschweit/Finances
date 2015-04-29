@@ -10,22 +10,20 @@
 		public decimal Amount { get; set; }
 		public DateTime Date { get; set; }
 		public string ExpenseType { get; set; }
-		public bool IsNew { get; set; }
 
 		public Expense()
 		{
 			Id = new ObjectId();
-			IsNew = true;
 		}
 
 		public static explicit operator Expense(ExpenseView view)
 		{
 			return new Expense()
 			{
-				Id = view.Id,
+				Id = new ObjectId(view.Id),
 				Description = view.Description,
-				Amount = view.Amount,
-				Date = view.Date,
+				Amount = Int32.Parse(view.Amount),
+				Date = DateTime.Parse(view.Date),
 				ExpenseType = view.ExpenseType
 			};
 		}
@@ -33,18 +31,25 @@
 
 	public class ExpenseView
 	{
-		public ObjectId Id { get; set; }
+		public bool IsNew { get; set; }
+		public string Id { get; set; }
 		public string Description { get; set; }
-		public decimal Amount { get; set; }
-		public DateTime Date { get; set; }
+		public string Amount { get; set; }
+		public string Date { get; set; }
 		public string ExpenseType { get; set; }
+
+		public ExpenseView()
+		{
+			IsNew = true;
+			Id = new ObjectId().ToString();
+		}
 
 		public ExpenseView(Expense expense)
 		{
-			Id = expense.Id;
+			Id = expense.Id.ToString();
 			Description = expense.Description;
-			Amount = expense.Amount;
-			Date = expense.Date;
+			Amount = expense.Amount.ToString();
+			Date = expense.Date.ToShortDateString();
 			ExpenseType = expense.ExpenseType;
 		}
 	}
